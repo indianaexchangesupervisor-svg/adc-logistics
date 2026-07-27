@@ -17,22 +17,20 @@ padding:30px;
 border-radius:10px;
 max-width:500px;
 margin:auto;
-box-shadow:0 0 10px #ccc;
 }
 
 input{
-width:80%;
 padding:12px;
-font-size:16px;
+width:80%;
 }
 
 button{
 padding:12px 25px;
+margin-top:15px;
 background:#0066cc;
 color:white;
-border:0;
+border:none;
 cursor:pointer;
-margin-top:15px;
 }
 
 #result{
@@ -54,7 +52,7 @@ text-align:left;
 
 <br>
 
-<button onclick="track()">Track Shipment</button>
+<button onclick="trackShipment()">Track Shipment</button>
 
 <div id="result"></div>
 
@@ -63,43 +61,44 @@ text-align:left;
 
 <script>
 
-async function track(){
+function trackShipment(){
 
-let number=document.getElementById("tracking").value;
+var number = document.getElementById("tracking").value;
 
-let response = await fetch(
-"YOUR_GOOGLE_SCRIPT_URL?tracking="+number
-);
+var shipments = {
 
-let data=await response.json();
+"ADC10001":{
+status:"In Transit",
+location:"Lagos Transit Center",
+arrival:"30 July 2026",
+history:[
+"Shipment Created",
+"Package Collected",
+"Arrived at Transit Center"
+]
+}
+
+};
 
 
-if(data.status){
+if(shipments[number]){
 
-document.getElementById("result").innerHTML=
+var s = shipments[number];
 
-`
-<h3>Shipment Details</h3>
+document.getElementById("result").innerHTML =
 
-<p><b>Status:</b> ${data.status}</p>
-
-<p><b>Location:</b> ${data.location}</p>
-
-<p><b>Arrival:</b> ${data.arrival}</p>
-
-<h4>History</h4>
-
-${data.history.map(
-h=>`<p>${h.date} ${h.time}<br>${h.message}</p>`
-).join("")}
-
-`;
+"<h3>Shipment Details</h3>"+
+"<p><b>Status:</b> "+s.status+"</p>"+
+"<p><b>Location:</b> "+s.location+"</p>"+
+"<p><b>Expected Arrival:</b> "+s.arrival+"</p>"+
+"<h4>History</h4>"+
+s.history.map(x=>"<p>✓ "+x+"</p>").join("");
 
 }
 
 else{
 
-document.getElementById("result").innerHTML=
+document.getElementById("result").innerHTML =
 "Tracking number not found";
 
 }
