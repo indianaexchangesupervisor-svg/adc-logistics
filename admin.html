@@ -108,7 +108,30 @@ sender: document.getElementById("sender").value,
 
 receiver: document.getElementById("receiver").value,
 
-departure: document.getElementById("departure").value,
+departure: document.getEl<hr>
+
+<h3>Update Shipment</h3>
+
+<input id="updateTracking" placeholder="Enter Tracking Number">
+
+<input id="updateLocation" placeholder="New Location">
+
+
+<select id="updateStatus">
+
+<option>Received</option>
+<option>Processing</option>
+<option>In Transit</option>
+<option>Customs Clearance</option>
+<option>Out for Delivery</option>
+<option>Delivered</option>
+
+</select>
+
+
+<button onclick="updateShipment()">
+Update Shipment
+</button>ementById("departure").value,
 
 arrival: document.getElementById("arrival").value,
 
@@ -140,7 +163,54 @@ document.getElementById("result").innerHTML =
 
 }
 
+function updateShipment(){
 
+let tracking = document.getElementById("updateTracking").value;
+
+let shipment = JSON.parse(localStorage.getItem(tracking));
+
+
+if(shipment){
+
+shipment.location =
+document.getElementById("updateLocation").value;
+
+
+shipment.status =
+document.getElementById("updateStatus").value;
+
+
+shipment.history.push({
+
+date: new Date().toLocaleDateString(),
+
+time: new Date().toLocaleTimeString(),
+
+message:
+"Shipment updated to " + shipment.status
+
+});
+
+
+localStorage.setItem(
+tracking,
+JSON.stringify(shipment)
+);
+
+
+document.getElementById("result").innerHTML =
+"Shipment Updated Successfully";
+
+}
+
+else{
+
+document.getElementById("result").innerHTML =
+"Tracking number not found";
+
+}
+
+  }
 </script>
 
 
