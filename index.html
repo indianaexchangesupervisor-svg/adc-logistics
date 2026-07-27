@@ -108,7 +108,15 @@ result.innerHTML =
 
 "<b>Location:</b> " + data.location + "<br><br>" +
 
-"<b>Status:</b> " + data.status;
+"<b>Status:</b> " + data.status +
+"<br><br><h3>Shipment History</h3>" +
+
+data.history.map(item =>
+
+item.date + " " + item.time + "<br>" +
+item.message + "<br><br>"
+
+).join("");
 
 }
 
