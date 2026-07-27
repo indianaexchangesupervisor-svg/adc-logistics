@@ -5,38 +5,39 @@
 
 <style>
 body{
-    font-family: Arial;
-    background:#f4f6f8;
-    text-align:center;
-    padding:40px;
+font-family:Arial;
+background:#f2f2f2;
+text-align:center;
+padding:40px;
 }
 
 .box{
-    background:white;
-    padding:30px;
-    max-width:450px;
-    margin:auto;
-    border-radius:10px;
-    box-shadow:0 0 10px #ccc;
+background:white;
+padding:30px;
+border-radius:10px;
+max-width:500px;
+margin:auto;
+box-shadow:0 0 10px #ccc;
 }
 
 input{
-    width:90%;
-    padding:12px;
-    margin:10px;
+width:80%;
+padding:12px;
+font-size:16px;
 }
 
 button{
-    padding:12px 25px;
-    background:#0066ff;
-    color:white;
-    border:none;
-    border-radius:5px;
+padding:12px 25px;
+background:#0066cc;
+color:white;
+border:0;
+cursor:pointer;
+margin-top:15px;
 }
 
-.result{
-    margin-top:20px;
-    text-align:left;
+#result{
+margin-top:20px;
+text-align:left;
 }
 </style>
 
@@ -49,115 +50,61 @@ button{
 <h1>ADC Logistics</h1>
 <h3>Track Your Shipment</h3>
 
-<input id="trackingNumber" placeholder="Enter Tracking Number">
+<input id="tracking" placeholder="Enter Tracking Number">
 
 <br>
 
-<button onclick="trackShipment()">
-Track Shipment
-</button>
+<button onclick="track()">Track Shipment</button>
 
-<div class="result" id="result"></div>
+<div id="result"></div>
 
 </div>
 
 
-<script type="module">
+<script>
 
-import { initializeApp } from 
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+async function track(){
 
-import { getFirestore, collection, query, where, getDocs }
-from 
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+let number=document.getElementById("tracking").value;
 
-
-// YOUR FIREBASE SETTINGS GO HERE
-const firebaseConfig = {
-
-apiKey:"YOUR_API_KEY",
-
-authDomain:"YOUR_AUTH_DOMAIN",
-
-projectId:"YOUR_PROJECT_ID",
-
-storageBucket:"YOUR_STORAGE_BUCKET",
-
-messagingSenderId:"YOUR_SENDER_ID",
-
-appId:"YOUR_APP_ID"
-
-};
-
-
-const app = initializeApp(firebaseConfig);
-
-const db = getFirestore(app);
-
-
-
-window.trackShipment = async function(){
-
-let number =
-document.getElementById("trackingNumber").value;
-
-
-let q=query(
-collection(db,"shipments"),
-where("trackingNumber","==",number)
+let response = await fetch(
+"YOUR_GOOGLE_SCRIPT_URL?tracking="+number
 );
 
-
-let snapshot=await getDocs(q);
-
+let data=await response.json();
 
 
-if(snapshot.empty){
-
-document.getElementById("result").innerHTML =
-"<h3>Shipment not found</h3>";
-
-return;
-
-}
-
-
-snapshot.forEach(doc=>{
-
-
-let data=doc.data();
-
+if(data.status){
 
 document.getElementById("result").innerHTML=
 
 `
-<h3>Shipment Found</h3>
-
-<p><b>Tracking:</b> ${data.trackingNumber}</p>
+<h3>Shipment Details</h3>
 
 <p><b>Status:</b> ${data.status}</p>
 
-<p><b>From:</b> ${data.origin}</p>
+<p><b>Location:</b> ${data.location}</p>
 
-<p><b>To:</b> ${data.destination}</p>
+<p><b>Arrival:</b> ${data.arrival}</p>
 
-<p><b>History:</b></p>
+<h4>History</h4>
 
-${data.history.map(item=>`
-
-<p>
-${item.date} - ${item.message}
-</p>
-
-`).join("")}
+${data.history.map(
+h=>`<p>${h.date} ${h.time}<br>${h.message}</p>`
+).join("")}
 
 `;
 
-});
+}
 
+else{
+
+document.getElementById("result").innerHTML=
+"Tracking number not found";
 
 }
 
+}
 
 </script>
 
