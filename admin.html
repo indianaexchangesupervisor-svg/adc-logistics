@@ -6,47 +6,42 @@
 
 <style>
 
-body {
-    font-family: Arial, sans-serif;
-    background:#eef3f8;
-    padding:30px;
+body{
+font-family:Arial;
+background:#eef3f8;
+padding:30px;
 }
 
-.box {
-    background:white;
-    max-width:500px;
-    margin:auto;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 0 15px #ccc;
+.box{
+background:white;
+max-width:500px;
+margin:auto;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 15px #ccc;
 }
 
-input, select, button {
-    width:90%;
-    padding:12px;
-    margin:10px;
+input, select, button{
+width:90%;
+padding:12px;
+margin:10px;
 }
 
-button {
-    background:#003366;
-    color:white;
-    border:none;
-    cursor:pointer;
+button{
+background:#003366;
+color:white;
+border:none;
+cursor:pointer;
 }
 
-button:hover {
-    background:#0055aa;
-}
-
-#result {
-    margin-top:20px;
-    font-weight:bold;
+#result{
+margin-top:20px;
+font-weight:bold;
 }
 
 </style>
 
 </head>
-
 
 <body>
 
@@ -54,43 +49,31 @@ button:hover {
 
 <h1>ADC Logistics Admin</h1>
 
-<h3>Create Shipment</h3>
-
-
-<input id="tracking" placeholder="Tracking Number" readonly>
-
-
 <input id="sender" placeholder="Sender Name">
-
 
 <input id="receiver" placeholder="Receiver Name">
 
+<label>Departure Date</label>
+<input type="date" id="departure">
 
-<label>Date of Departure</label>
-<input type="date" id="departureDate">
-
-
-<label>Date of Arrival</label>
-<input type="date" id="arrivalDate">
-
+<label>Arrival Date</label>
+<input type="date" id="arrival">
 
 <input id="location" placeholder="Current Location">
 
 
 <select id="status">
-
 <option>Received</option>
 <option>Processing</option>
 <option>In Transit</option>
 <option>Customs Clearance</option>
 <option>Out for Delivery</option>
 <option>Delivered</option>
-
 </select>
 
 
-<button onclick="saveShipment()">
-Save Shipment
+<button onclick="createShipment()">
+Create Shipment
 </button>
 
 
@@ -102,20 +85,26 @@ Save Shipment
 
 <script>
 
-function saveShipment(){
+
+function createShipment(){
+
+
+let trackingNumber =
+"ADC" + Math.floor(100000 + Math.random()*900000);
+
 
 
 let shipment = {
 
-tracking: document.getElementById("tracking").value,
+tracking: trackingNumber,
 
 sender: document.getElementById("sender").value,
 
 receiver: document.getElementById("receiver").value,
 
-departureDate: document.getElementById("departureDate").value,
+departure: document.getElementById("departure").value,
 
-arrivalDate: document.getElementById("arrivalDate").value,
+arrival: document.getElementById("arrival").value,
 
 location: document.getElementById("location").value,
 
@@ -124,8 +113,9 @@ status: document.getElementById("status").value
 };
 
 
+
 localStorage.setItem(
-shipment.tracking,
+trackingNumber,
 JSON.stringify(shipment)
 );
 
@@ -133,15 +123,13 @@ JSON.stringify(shipment)
 
 document.getElementById("result").innerHTML =
 
-"Shipment Saved Successfully<br><br>" +
+"Shipment Created Successfully<br><br>" +
 
-"Tracking Number: " + shipment.tracking + "<br>" +
+"Tracking Number:<br>" +
 
-"Sender: " + shipment.sender + "<br>" +
+"<h2>" + trackingNumber + "</h2>" +
 
-"Receiver: " + shipment.receiver + "<br>" +
-
-"Status: " + shipment.status;
+"Save this number for the customer";
 
 
 }
