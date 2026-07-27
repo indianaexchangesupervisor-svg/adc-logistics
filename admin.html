@@ -70,22 +70,45 @@ button {
 </div>
 
 
-<script>
+<script type="module">
 
-async function saveShipment(){
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDx2v4Xz6B96EOXBQN6pcqCZcfW4dCX9EQ",
+  authDomain: "adc-logistics-b67e2.firebaseapp.com",
+  projectId: "adc-logistics-b67e2",
+  storageBucket: "adc-logistics-b67e2.firebasestorage.app",
+  messagingSenderId: "610950168213",
+  appId: "1:610950168213:web:2aa3bd1286a3a2a023a59c"
+};
+
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
+window.saveShipment = async function(){
 
 let tracking = document.getElementById("tracking").value;
 let customer = document.getElementById("customer").value;
 let location = document.getElementById("location").value;
 let status = document.getElementById("status").value;
 
-localStorage.setItem(tracking, JSON.stringify({
+
+await addDoc(collection(db, "shipments"), {
+tracking: tracking,
 customer: customer,
 location: location,
 status: status
-}));
+});
+
 
 document.getElementById("result").innerHTML =
 "Shipment saved: " + tracking;
 
 }
+
+</script>
