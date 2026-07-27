@@ -95,7 +95,13 @@ let trackingNumber =
 
 
 let shipment = {
-
+history: [
+{
+date: new Date().toLocaleDateString(),
+time: new Date().toLocaleTimeString(),
+message: "Shipment created"
+}
+]
 tracking: trackingNumber,
 
 sender: document.getElementById("sender").value,
