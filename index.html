@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ADC Logistics Tracking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f2f2f2;
+            padding: 40px;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+        }
+        input, button {
+            padding: 12px;
+            margin: 10px;
+            width: 80%;
+        }
+        button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>ADC Logistics</h1>
+    <h2>Package Tracking</h2>
+
+    <input id="tracking" placeholder="Enter tracking number">
+
+    <button onclick="trackPackage()">Track Package</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function trackPackage() {
+    let number = document.getElementById("tracking").value;
+
+    if(number === "ADC12345") {
+        document.getElementById("result").innerHTML =
+        "Status: In Transit<br>Location: Airport Hub<br>Delivery: Pending";
+    } else {
+        document.getElementById("result").innerHTML =
+        "Tracking number not found.";
+    }
+}
+</script>
+
+</body>
+</html>
