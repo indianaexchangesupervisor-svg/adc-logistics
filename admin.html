@@ -72,13 +72,12 @@ button {
 
 <script>
 
-function saveShipment(){
+async function saveShipment(){
 
 let tracking = document.getElementById("tracking").value;
 let customer = document.getElementById("customer").value;
 let location = document.getElementById("location").value;
 let status = document.getElementById("status").value;
-
 
 localStorage.setItem(tracking, JSON.stringify({
 customer: customer,
@@ -90,8 +89,3 @@ document.getElementById("result").innerHTML =
 "Shipment saved: " + tracking;
 
 }
-
-</script>
-
-</body>
-</html>
