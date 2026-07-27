@@ -1,26 +1,108 @@
-function track(){
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>ADC Logistics Tracking</title>
+
+<style>
+body {
+    font-family: Arial;
+    background:#eef3f8;
+    margin:0;
+}
+
+.header {
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.container {
+    background:white;
+    max-width:500px;
+    margin:40px auto;
+    padding:30px;
+    text-align:center;
+    border-radius:10px;
+}
+
+input {
+    width:90%;
+    padding:12px;
+    margin:15px;
+}
+
+button {
+    background:#ff9900;
+    color:white;
+    padding:12px 25px;
+    border:none;
+}
+
+#result {
+    margin-top:25px;
+}
+</style>
+
+</head>
+
+
+<body>
+
+<div class="header">
+<h1>ADC Logistics</h1>
+<p>Airline Delivering Express</p>
+</div>
+
+
+<div class="container">
+
+<h2>Track Your Package</h2>
+
+<input id="trackingNumber" placeholder="Enter Tracking Number">
+
+
+<br>
+
+<button onclick="trackPackage()">
+Track Package
+</button>
+
+
+<div id="result"></div>
+
+</div>
+
+
+
+<script>
+
+function trackPackage(){
 
 let number = document.getElementById("trackingNumber").value;
-
-let shipment = localStorage.getItem(number);
 
 let result = document.getElementById("result");
 
 
-if(shipment){
-
-let data = JSON.parse(shipment);
+if(number == "ADC10001"){
 
 result.innerHTML =
 
-"<h3>Shipment Details</h3>" +
-"<b>Tracking Number:</b> " + data.tracking + "<br><br>" +
-"<b>Sender:</b> " + data.sender + "<br><br>" +
-"<b>Receiver:</b> " + data.receiver + "<br><br>" +
-"<b>Departure Date:</b> " + data.departureDate + "<br><br>" +
-"<b>Arrival Date:</b> " + data.arrivalDate + "<br><br>" +
-"<b>Location:</b> " + data.location + "<br><br>" +
-"<b>Status:</b> " + data.status;
+"<h3>Shipment Found</h3>" +
+"Tracking Number: ADC10001<br><br>" +
+"Sender: John Smith<br><br>" +
+"Receiver: Mary Johnson<br><br>" +
+"Departure Date: 2026-07-20<br><br>" +
+"Arrival Date: 2026-07-30<br><br>" +
+"Location: Airport Hub<br><br>" +
+"Status: In Transit";
+
+}
+
+else if(number == ""){
+
+result.innerHTML = "Please enter tracking number.";
 
 }
 
@@ -31,3 +113,9 @@ result.innerHTML = "Tracking number not found.";
 }
 
 }
+
+</script>
+
+
+</body>
+</html>
