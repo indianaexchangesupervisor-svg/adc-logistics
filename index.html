@@ -12,23 +12,19 @@ if(shipment){
 let data = JSON.parse(shipment);
 
 result.innerHTML =
+
+"<h3>Shipment Details</h3>" +
 "<b>Tracking Number:</b> " + data.tracking + "<br><br>" +
 "<b>Sender:</b> " + data.sender + "<br><br>" +
 "<b>Receiver:</b> " + data.receiver + "<br><br>" +
 "<b>Departure Date:</b> " + data.departureDate + "<br><br>" +
 "<b>Arrival Date:</b> " + data.arrivalDate + "<br><br>" +
-"<b>Current Location:</b> " + data.location + "<br><br>" +
+"<b>Location:</b> " + data.location + "<br><br>" +
 "<b>Status:</b> " + data.status;
 
 }
 
-else if(number === ""){
-
-result.innerHTML = "Please enter a tracking number.";
-
-}
-
-else{
+else {
 
 result.innerHTML = "Tracking number not found.";
 
