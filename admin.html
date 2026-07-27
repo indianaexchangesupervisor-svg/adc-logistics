@@ -1,74 +1,91 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <title>ADC Logistics Admin</title>
 
 <style>
 
-body{
-font-family:Arial;
-background:#eef3f8;
-padding:30px;
+body {
+    font-family: Arial, sans-serif;
+    background:#eef3f8;
+    padding:30px;
 }
 
-.box{
-background:white;
-max-width:500px;
-margin:auto;
-padding:30px;
-border-radius:10px;
-box-shadow:0 0 15px #ccc;
+.box {
+    background:white;
+    max-width:550px;
+    margin:auto;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 0 15px #ccc;
 }
 
-input, select, button{
-width:90%;
-padding:12px;
-margin:10px;
+input, select, button {
+    width:90%;
+    padding:12px;
+    margin:10px;
 }
 
-button{
-background:#003366;
-color:white;
-border:none;
-cursor:pointer;
+button {
+    background:#003366;
+    color:white;
+    border:none;
+    cursor:pointer;
 }
 
-#result{
-margin-top:20px;
-font-weight:bold;
+button:hover {
+    background:#0055aa;
+}
+
+#result {
+    margin-top:20px;
+    font-weight:bold;
 }
 
 </style>
 
 </head>
 
+
 <body>
+
 
 <div class="box">
 
 <h1>ADC Logistics Admin</h1>
 
+
+<h3>Create Shipment</h3>
+
+
 <input id="sender" placeholder="Sender Name">
 
 <input id="receiver" placeholder="Receiver Name">
 
+
 <label>Departure Date</label>
 <input type="date" id="departure">
+
 
 <label>Arrival Date</label>
 <input type="date" id="arrival">
 
+
 <input id="location" placeholder="Current Location">
 
 
+
 <select id="status">
+
 <option>Received</option>
 <option>Processing</option>
 <option>In Transit</option>
 <option>Customs Clearance</option>
 <option>Out for Delivery</option>
 <option>Delivered</option>
+
 </select>
 
 
@@ -83,54 +100,110 @@ Create Shipment
 </div>
 
 
-<script>
+
+<script type="module">
 
 
-function createShipment(){
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import { 
+getFirestore,
+collection,
+addDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-let trackingNumber =
-"ADC" + Math.floor(100000 + Math.random()*900000);
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyDx2v4Xz6B96EOXBQN6pcqCZcfW4dCX9EQ",
+
+authDomain: "adc-logistics-b67e2.firebaseapp.com",
+
+projectId: "adc-logistics-b67e2",
+
+storageBucket: "adc-logistics-b67e2.firebasestorage.app",
+
+messagingSenderId: "610950168213",
+
+appId: "1:610950168213:web:2aa3bd1286a3a2a023a59c",
+
+measurementId: "G-MM2B389NJS"
+
+};
+
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+
+let counter = Math.floor(100000 + Math.random()*900000);
+
+
+
+window.createShipment = async function(){
+
+
+let trackingNumber = 
+"ADC-2026-" + counter;
 
 
 
 let shipment = {
-history: [
-{
-date: new Date().toLocaleDateString(),
-time: new Date().toLocaleTimeString(),
-message: "Shipment created"
-}
-],
+
+
 tracking: trackingNumber,
 
-sender: document.getElementById("sender").value,
 
-receiver: document.getElementById("receiver").value,
+sender:
+document.getElementById("sender").value,
 
-departure: document.getEl<hr>
 
-location: document.getElementById("location").value,
+receiver:
+document.getElementById("receiver").value,
 
-status: document.getElementById("status").value
+
+departure:
+document.getElementById("departure").value,
+
+
+arrival:
+document.getElementById("arrival").value,
+
+
+location:
+document.getElementById("location").value,
+
+
+status:
+document.getElementById("status").value,
+
+
+history:[
+
+{
+
+date:new Date().toLocaleDateString(),
+
+time:new Date().toLocaleTimeString(),
+
+message:"Shipment created"
+
+}
+
+]
+
 
 };
-Update Shipment
-</button>ementById("departure").value,
-
-arrival: document.getElementById("arrival").value,
-
-location: document.getElementById("location").value,
-
-status: document.getElementById("status").value
-
-};
 
 
 
-localStorage.setItem(
-trackingNumber,
-JSON.stringify(shipment)
+await addDoc(
+collection(db,"shipments"),
+shipment
 );
 
 
@@ -141,63 +214,18 @@ document.getElementById("result").innerHTML =
 
 "Tracking Number:<br>" +
 
-"<h2>" + trackingNumber + "</h2>" +
-
-"Save this number for the customer";
+"<h2>"+trackingNumber+"</h2>";
 
 
-}
 
-function updateShipment(){
-
-let tracking = document.getElementById("updateTracking").value;
-
-let shipment = JSON.parse(localStorage.getItem(tracking));
-
-
-if(shipment){
-
-shipment.location =
-document.getElementById("updateLocation").value;
-
-
-shipment.status =
-document.getElementById("updateStatus").value;
-
-
-shipment.history.push({
-
-date: new Date().toLocaleDateString(),
-
-time: new Date().toLocaleTimeString(),
-
-message:
-"Shipment updated to " + shipment.status
-
-});
-
-
-localStorage.setItem(
-tracking,
-JSON.stringify(shipment)
-);
-
-
-document.getElementById("result").innerHTML =
-"Shipment Updated Successfully";
+counter++;
 
 }
 
-else{
 
-document.getElementById("result").innerHTML =
-"Tracking number not found";
-
-}
-
-  }
 </script>
 
 
 </body>
+
 </html>
