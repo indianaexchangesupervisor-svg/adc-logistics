@@ -69,12 +69,10 @@ button {
 
 </div>
 
-
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyDx2v4Xz6B96EOXBQN6pcqCZcfW4dCX9EQ",
@@ -85,30 +83,40 @@ const firebaseConfig = {
   appId: "1:610950168213:web:2aa3bd1286a3a2a023a59c"
 };
 
-
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+const button = document.getElementById("saveBtn");
 
-document.getElementById("saveBtn").onclick = async function(){
+button.addEventListener("click", async () => {
 
-let tracking = document.getElementById("tracking").value;
-let customer = document.getElementById("customer").value;
-let location = document.getElementById("location").value;
-let status = document.getElementById("status").value;
+    let tracking = document.getElementById("tracking").value;
+    let customer = document.getElementById("customer").value;
+    let location = document.getElementById("location").value;
+    let status = document.getElementById("status").value;
 
+    try {
 
-await addDoc(collection(db, "shipments"), {
-tracking: tracking,
-customer: customer,
-location: location,
-status: status
+        await addDoc(collection(db, "shipments"), {
+            tracking: tracking,
+            customer: customer,
+            location: location,
+            status: status
+        });
+
+        document.getElementById("result").innerHTML =
+        "Shipment saved: " + tracking;
+
+    } catch(error) {
+
+        document.getElementById("result").innerHTML =
+        "Error: " + error.message;
+
+    }
+
 });
 
-
-document.getElementById("result").innerHTML =
-"Shipment saved: " + tracking;
-
-}
-
 </script>
+
+</body>
+</html>
