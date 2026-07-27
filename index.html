@@ -82,37 +82,49 @@ function trackPackage(){
 
 let number = document.getElementById("trackingNumber").value;
 
+let shipment = localStorage.getItem(number);
+
 let result = document.getElementById("result");
 
 
-if(number == "ADC10001"){
+if(shipment){
+
+let data = JSON.parse(shipment);
+
 
 result.innerHTML =
 
 "<h3>Shipment Found</h3>" +
-"Tracking Number: ADC10001<br><br>" +
-"Sender: John Smith<br><br>" +
-"Receiver: Mary Johnson<br><br>" +
-"Departure Date: 2026-07-20<br><br>" +
-"Arrival Date: 2026-07-30<br><br>" +
-"Location: Airport Hub<br><br>" +
-"Status: In Transit";
+
+"<b>Tracking Number:</b> " + data.tracking + "<br><br>" +
+
+"<b>Sender:</b> " + data.sender + "<br><br>" +
+
+"<b>Receiver:</b> " + data.receiver + "<br><br>" +
+
+"<b>Departure Date:</b> " + data.departure + "<br><br>" +
+
+"<b>Arrival Date:</b> " + data.arrival + "<br><br>" +
+
+"<b>Location:</b> " + data.location + "<br><br>" +
+
+"<b>Status:</b> " + data.status;
 
 }
 
-else if(number == ""){
+else if(number === ""){
 
-result.innerHTML = "Please enter tracking number.";
+result.innerHTML = "Please enter a tracking number.";
 
 }
 
-else {
+else{
 
 result.innerHTML = "Tracking number not found.";
 
 }
 
-}
+    }
 
 </script>
 
