@@ -1,65 +1,133 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ADC Logistics Tracking</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: #f2f2f2;
-            padding: 40px;
-        }
-        .box {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 500px;
-            margin: auto;
-        }
-        input, button {
-            padding: 12px;
-            margin: 10px;
-            width: 80%;
-        }
-        button {
-            background: #0066cc;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        #result {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-    </style>
+<title>ADC Logistics | Package Tracking</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #eef3f8;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background: #003366;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+.container {
+    background: white;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #ccc;
+    text-align: center;
+}
+
+input {
+    width: 90%;
+    padding: 14px;
+    margin: 15px 0;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+button {
+    background: #ff9900;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #cc7700;
+}
+
+#result {
+    margin-top: 25px;
+    font-size: 18px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: #555;
+}
+</style>
+
 </head>
 
 <body>
 
-<div class="box">
-    <h1>ADC Logistics</h1>
-    <h2>Package Tracking</h2>
-
-    <input id="tracking" placeholder="Enter tracking number">
-
-    <button onclick="trackPackage()">Track Package</button>
-
-    <div id="result"></div>
+<div class="header">
+<h1>ADC Logistics</h1>
+<p>Airline Delivering Express</p>
 </div>
 
-<script>
-function trackPackage() {
-    let number = document.getElementById("tracking").value;
 
-    if(number === "ADC12345") {
-        document.getElementById("result").innerHTML =
-        "Status: In Transit<br>Location: Airport Hub<br>Delivery: Pending";
-    } else {
-        document.getElementById("result").innerHTML =
-        "Tracking number not found.";
-    }
+<div class="container">
+
+<h2>Track Your Shipment</h2>
+
+<p>Enter your tracking number below</p>
+
+<input id="trackingNumber" placeholder="Example: ADC12345">
+
+<br>
+
+<button onclick="track()">Track Package</button>
+
+<div id="result"></div>
+
+</div>
+
+
+<div class="footer">
+© 2026 ADC Logistics. All rights reserved.
+</div>
+
+
+<script>
+
+function track(){
+
+let number = document.getElementById("trackingNumber").value;
+
+let result = document.getElementById("result");
+
+
+if(number === "ADC12345"){
+
+result.innerHTML =
+"<b>Status:</b> In Transit<br><br>" +
+"<b>Location:</b> Airport Hub<br><br>" +
+"<b>Estimated Delivery:</b> Pending";
+
 }
+
+else if(number === ""){
+
+result.innerHTML = "Please enter a tracking number.";
+
+}
+
+else {
+
+result.innerHTML =
+"Tracking number not found.";
+
+}
+
+}
+
 </script>
+
 
 </body>
 </html>
