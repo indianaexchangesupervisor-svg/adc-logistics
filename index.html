@@ -1,138 +1,163 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>ADC Logistics Tracking</title>
 
 <style>
-body {
+body{
     font-family: Arial;
-    background:#eef3f8;
-    margin:0;
-}
-
-.header {
-    background:#003366;
-    color:white;
+    background:#f4f6f8;
     text-align:center;
-    padding:25px;
+    padding:40px;
 }
 
-.container {
+.box{
     background:white;
-    max-width:500px;
-    margin:40px auto;
     padding:30px;
-    text-align:center;
+    max-width:450px;
+    margin:auto;
     border-radius:10px;
+    box-shadow:0 0 10px #ccc;
 }
 
-input {
+input{
     width:90%;
     padding:12px;
-    margin:15px;
+    margin:10px;
 }
 
-button {
-    background:#ff9900;
-    color:white;
+button{
     padding:12px 25px;
+    background:#0066ff;
+    color:white;
     border:none;
+    border-radius:5px;
 }
 
-#result {
-    margin-top:25px;
+.result{
+    margin-top:20px;
+    text-align:left;
 }
 </style>
 
 </head>
 
-
 <body>
 
-<div class="header">
+<div class="box">
+
 <h1>ADC Logistics</h1>
-<p>Airline Delivering Express</p>
-</div>
-
-
-<div class="container">
-
-<h2>Track Your Package</h2>
+<h3>Track Your Shipment</h3>
 
 <input id="trackingNumber" placeholder="Enter Tracking Number">
 
-
 <br>
 
-<button onclick="trackPackage()">
-Track Package
+<button onclick="trackShipment()">
+Track Shipment
 </button>
 
-
-<div id="result"></div>
+<div class="result" id="result"></div>
 
 </div>
 
 
+<script type="module">
 
-<script>
+import { initializeApp } from 
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 
-function trackPackage(){
-
-let number = document.getElementById("trackingNumber").value;
-
-let shipment = localStorage.getItem(number);
-
-let result = document.getElementById("result");
+import { getFirestore, collection, query, where, getDocs }
+from 
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 
-if(shipment){
+// YOUR FIREBASE SETTINGS GO HERE
+const firebaseConfig = {
 
-let data = JSON.parse(shipment);
+apiKey:"YOUR_API_KEY",
+
+authDomain:"YOUR_AUTH_DOMAIN",
+
+projectId:"YOUR_PROJECT_ID",
+
+storageBucket:"YOUR_STORAGE_BUCKET",
+
+messagingSenderId:"YOUR_SENDER_ID",
+
+appId:"YOUR_APP_ID"
+
+};
 
 
-result.innerHTML =
+const app = initializeApp(firebaseConfig);
 
-"<h3>Shipment Found</h3>" +
+const db = getFirestore(app);
 
-"<b>Tracking Number:</b> " + data.tracking + "<br><br>" +
 
-"<b>Sender:</b> " + data.sender + "<br><br>" +
 
-"<b>Receiver:</b> " + data.receiver + "<br><br>" +
+window.trackShipment = async function(){
 
-"<b>Departure Date:</b> " + data.departure + "<br><br>" +
+let number =
+document.getElementById("trackingNumber").value;
 
-"<b>Arrival Date:</b> " + data.arrival + "<br><br>" +
 
-"<b>Location:</b> " + data.location + "<br><br>" +
+let q=query(
+collection(db,"shipments"),
+where("trackingNumber","==",number)
+);
 
-"<b>Status:</b> " + data.status +
-"<br><br><h3>Shipment History</h3>" +
 
-data.history.map(item =>
+let snapshot=await getDocs(q);
 
-item.date + " " + item.time + "<br>" +
-item.message + "<br><br>"
 
-).join("");
+
+if(snapshot.empty){
+
+document.getElementById("result").innerHTML =
+"<h3>Shipment not found</h3>";
+
+return;
 
 }
 
-else if(number === ""){
 
-result.innerHTML = "Please enter a tracking number.";
+snapshot.forEach(doc=>{
+
+
+let data=doc.data();
+
+
+document.getElementById("result").innerHTML=
+
+`
+<h3>Shipment Found</h3>
+
+<p><b>Tracking:</b> ${data.trackingNumber}</p>
+
+<p><b>Status:</b> ${data.status}</p>
+
+<p><b>From:</b> ${data.origin}</p>
+
+<p><b>To:</b> ${data.destination}</p>
+
+<p><b>History:</b></p>
+
+${data.history.map(item=>`
+
+<p>
+${item.date} - ${item.message}
+</p>
+
+`).join("")}
+
+`;
+
+});
+
 
 }
 
-else{
-
-result.innerHTML = "Tracking number not found.";
-
-}
-
-    }
 
 </script>
 
