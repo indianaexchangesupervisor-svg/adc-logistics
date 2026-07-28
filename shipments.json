@@ -1,16 +1,20 @@
 [
   {
-    "tracking": "ADC10001",
-    "customer": "Test Customer",
-    "origin": "Cotonou, Benin",
-    "destination": "Lagos, Nigeria",
-    "status": "In Transit",
-    "location": "Lagos Transit Center",
-    "arrival": "30 July 2026",
+    "tracking": "ADC-UKIN-260728-7845",
+    "customer": "Dhanya Unni",
+    "sender": "Dr Wilson Scott",
+    "origin": "England",
+    "destination": "India",
+    "status": "Out for Delivery",
+    "location": "New Delhi International Airport",
+    "arrival": "28 July 2026",
+    "address": "Union Bank of India, Kokkayar Branch, Koottikkal P.O., Mundakayam-686514, Kottayam District, Kerala",
+    "phone": "+91 97475 81668",
     "history": [
       "Shipment Created",
-      "Package Collected",
-      "Arrived at Transit Center"
+      "Departed from England",
+      "Arrived at New Delhi International Airport",
+      "Out for Delivery"
     ]
   }
 ]
