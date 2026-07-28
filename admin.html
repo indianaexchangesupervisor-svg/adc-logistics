@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>ADC Logistics Admin</title>
+
 <style>
+
 body{
 font-family:Arial;
-padding:30px;
-text-align:center;
 background:#f2f2f2;
+text-align:center;
+padding:30px;
 }
 
 .box{
@@ -18,25 +21,22 @@ margin:auto;
 border-radius:10px;
 }
 
-input{
+input, textarea{
 width:90%;
 padding:10px;
-margin:5px;
+margin:6px;
 }
 
 button{
-padding:12px 20px;
+padding:12px 25px;
 background:#0066cc;
 color:white;
-border:0;
+border:none;
+cursor:pointer;
 }
 
-textarea{
-width:90%;
-height:150px;
-margin-top:20px;
-}
 </style>
+
 </head>
 
 <body>
@@ -46,39 +46,54 @@ margin-top:20px;
 <h1>ADC Logistics Admin</h1>
 
 <input id="tracking" placeholder="Tracking Number">
+
 <input id="customer" placeholder="Customer Name">
+
 <input id="origin" placeholder="Origin">
+
 <input id="destination" placeholder="Destination">
+
 <input id="status" placeholder="Status">
-<input id="location" placeholder="Location">
+
+<input id="location" placeholder="Current Location">
+
 <input id="arrival" placeholder="Arrival Date">
 
-<button onclick="create()">Generate Shipment</button>
+<button onclick="generate()">Create Shipment</button>
 
-<textarea id="output"></textarea>
+<textarea id="output" placeholder="Shipment code will appear here"></textarea>
 
 </div>
 
 
 <script>
 
-function create(){
+function generate(){
 
 let shipment = {
-tracking:tracking.value,
-customer:customer.value,
-origin:origin.value,
-destination:destination.value,
-status:status.value,
-location:location.value,
-arrival:arrival.value,
+
+tracking: document.getElementById("tracking").value,
+
+customer: document.getElementById("customer").value,
+
+origin: document.getElementById("origin").value,
+
+destination: document.getElementById("destination").value,
+
+status: document.getElementById("status").value,
+
+location: document.getElementById("location").value,
+
+arrival: document.getElementById("arrival").value,
+
 history:[
 "Shipment Created"
 ]
+
 };
 
 
-output.value =
+document.getElementById("output").value =
 JSON.stringify(shipment,null,2);
 
 }
