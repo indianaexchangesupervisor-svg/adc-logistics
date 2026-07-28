@@ -1,0 +1,16 @@
+[
+  {
+    "tracking": "ADC10001",
+    "customer": "Test Customer",
+    "origin": "Cotonou, Benin",
+    "destination": "Lagos, Nigeria",
+    "status": "In Transit",
+    "location": "Lagos Transit Center",
+    "arrival": "30 July 2026",
+    "history": [
+      "Shipment Created",
+      "Package Collected",
+      "Arrived at Transit Center"
+    ]
+  }
+]
