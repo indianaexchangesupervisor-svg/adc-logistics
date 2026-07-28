@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <title>ADC Logistics Admin</title>
-
 <style>
 body{
 font-family:Arial;
-background:#f2f2f2;
-padding:40px;
+padding:30px;
 text-align:center;
+background:#f2f2f2;
 }
 
 .box{
 background:white;
-padding:30px;
+padding:25px;
 max-width:500px;
 margin:auto;
 border-radius:10px;
@@ -23,18 +21,22 @@ border-radius:10px;
 input{
 width:90%;
 padding:10px;
-margin:8px;
+margin:5px;
 }
 
 button{
-padding:12px 25px;
+padding:12px 20px;
 background:#0066cc;
 color:white;
 border:0;
-cursor:pointer;
+}
+
+textarea{
+width:90%;
+height:150px;
+margin-top:20px;
 }
 </style>
-
 </head>
 
 <body>
@@ -44,76 +46,44 @@ cursor:pointer;
 <h1>ADC Logistics Admin</h1>
 
 <input id="tracking" placeholder="Tracking Number">
-
 <input id="customer" placeholder="Customer Name">
-
 <input id="origin" placeholder="Origin">
-
 <input id="destination" placeholder="Destination">
-
 <input id="status" placeholder="Status">
-
-<input id="location" placeholder="Current Location">
-
+<input id="location" placeholder="Location">
 <input id="arrival" placeholder="Arrival Date">
 
+<button onclick="create()">Generate Shipment</button>
 
-<button onclick="createShipment()">
-Create Shipment
-</button>
-
-
-<p id="message"></p>
-
+<textarea id="output"></textarea>
 
 </div>
 
 
 <script>
 
-function createShipment(){
+function create(){
 
-let shipment={
-
-tracking:
-document.getElementById("tracking").value,
-
-customer:
-document.getElementById("customer").value,
-
-origin:
-document.getElementById("origin").value,
-
-destination:
-document.getElementById("destination").value,
-
-status:
-document.getElementById("status").value,
-
-location:
-document.getElementById("location").value,
-
-arrival:
-document.getElementById("arrival").value
-
+let shipment = {
+tracking:tracking.value,
+customer:customer.value,
+origin:origin.value,
+destination:destination.value,
+status:status.value,
+location:location.value,
+arrival:arrival.value,
+history:[
+"Shipment Created"
+]
 };
 
 
-localStorage.setItem(
-shipment.tracking,
-JSON.stringify(shipment)
-);
-
-
-document.getElementById("message").innerHTML =
-"Shipment Created Successfully";
+output.value =
+JSON.stringify(shipment,null,2);
 
 }
 
 </script>
 
-</div>
-
 </body>
-
 </html>
