@@ -105,7 +105,13 @@ document.getElementById("result").innerHTML = `
 <p><b>Current Location:</b> ${shipment.location}</p>
 
 <p><b>Expected Arrival:</b> ${shipment.arrival}</p>
+<h3>📦 Package Contents</h3>
 
+<ul>
+${shipment.items.map(item => `<li>${item}</li>`).join("")}
+</ul>
+
+<hr>
 <hr>
 
 <h3>Shipment History</h3>
