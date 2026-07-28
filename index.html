@@ -1,8 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ADC Logistics Tracking</title>
+
+<style>
+body{
+font-family:Arial, sans-serif;
+background:#f2f2f2;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+max-width:500px;
+margin:auto;
+padding:30px;
+border-radius:10px;
+}
+
+input{
+width:90%;
+padding:12px;
+font-size:16px;
+}
+
+button{
+margin-top:15px;
+padding:12px 25px;
+background:#0066cc;
+color:white;
+border:none;
+cursor:pointer;
+font-size:16px;
+}
+
+#result{
+margin-top:20px;
+text-align:left;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>ADC Logistics</h1>
+<h3>Track Your Shipment</h3>
+
+<input id="tracking" placeholder="Enter Tracking Number">
+
+<br>
+
+<button onclick="trackShipment()">
+Track Shipment
+</button>
+
+<div id="result"></div>
+
+</div>
+
+
 <script>
 
 async function trackShipment(){
 
-let number = document.getElementById("tracking").value;
+let number = document.getElementById("tracking").value.trim();
+
 
 let response = await fetch("shipments.json");
 
@@ -10,7 +76,7 @@ let shipments = await response.json();
 
 
 let shipment = shipments.find(
-s => s.tracking === number
+item => item.tracking === number
 );
 
 
@@ -22,16 +88,20 @@ document.getElementById("result").innerHTML = `
 
 <p><b>Customer:</b> ${shipment.customer}</p>
 
+<p><b>From:</b> ${shipment.origin}</p>
+
+<p><b>To:</b> ${shipment.destination}</p>
+
 <p><b>Status:</b> ${shipment.status}</p>
 
-<p><b>Location:</b> ${shipment.location}</p>
+<p><b>Current Location:</b> ${shipment.location}</p>
 
-<p><b>Arrival:</b> ${shipment.arrival}</p>
+<p><b>Expected Arrival:</b> ${shipment.arrival}</p>
 
-<h4>History</h4>
+<h4>Shipment History</h4>
 
 ${shipment.history.map(
-x => `<p>✓ ${x}</p>`
+h => `<p>✓ ${h}</p>`
 ).join("")}
 
 `;
@@ -41,10 +111,13 @@ x => `<p>✓ ${x}</p>`
 else{
 
 document.getElementById("result").innerHTML =
-"Tracking number not found";
+"<p>Tracking number not found.</p>";
 
 }
 
 }
 
 </script>
+
+</body>
+</html>
