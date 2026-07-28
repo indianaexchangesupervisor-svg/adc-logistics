@@ -88,7 +88,13 @@ if(shipment){
 
 document.getElementById("result").innerHTML = `
 
-<h3>Shipment Details</h3>
+<h2 style="color:#003366;">Shipment Details</h2>
+
+<div style="border:1px solid #ddd;border-radius:10px;padding:15px;background:#fafafa;">
+
+<p><b>Tracking Number:</b> ${shipment.tracking}</p>
+
+<p><b>Status:</b> <span style="background:green;color:white;padding:5px 10px;border-radius:5px;">${shipment.status}</span></p>
 
 <p><b>Customer:</b> ${shipment.customer}</p>
 
@@ -96,22 +102,19 @@ document.getElementById("result").innerHTML = `
 
 <p><b>To:</b> ${shipment.destination}</p>
 
-<p><b>Status:</b> ${shipment.status}</p>
-
 <p><b>Current Location:</b> ${shipment.location}</p>
 
 <p><b>Expected Arrival:</b> ${shipment.arrival}</p>
 
-<h4>Shipment History</h4>
+<hr>
 
-${shipment.history.map(
-h => `<p>✓ ${h}</p>`
-).join("")}
+<h3>Shipment History</h3>
+
+${shipment.history.map(h => `<p>✔ ${h}</p>`).join("")}
+
+</div>
 
 `;
-
-}
-
 else{
 
 document.getElementById("result").innerHTML =
