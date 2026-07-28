@@ -1,98 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>ADC Logistics Tracking</title>
-
-<style>
-body{
-font-family:Arial;
-background:#f2f2f2;
-text-align:center;
-padding:40px;
-}
-
-.box{
-background:white;
-padding:30px;
-border-radius:10px;
-max-width:500px;
-margin:auto;
-}
-
-input{
-padding:12px;
-width:80%;
-}
-
-button{
-padding:12px 25px;
-margin-top:15px;
-background:#0066cc;
-color:white;
-border:none;
-cursor:pointer;
-}
-
-#result{
-margin-top:20px;
-text-align:left;
-}
-</style>
-
-</head>
-
-<body>
-
-<div class="box">
-
-<h1>ADC Logistics</h1>
-<h3>Track Your Shipment</h3>
-
-<input id="tracking" placeholder="Enter Tracking Number">
-
-<br>
-
-<button onclick="trackShipment()">Track Shipment</button>
-
-<div id="result"></div>
-
-</div>
-
-
 <script>
 
-function trackShipment(){
+async function trackShipment(){
 
-var number = document.getElementById("tracking").value;
+let number = document.getElementById("tracking").value;
 
-var shipments = {
+let response = await fetch("shipments.json");
 
-"ADC10001":{
-status:"In Transit",
-location:"Lagos Transit Center",
-arrival:"30 July 2026",
-history:[
-"Shipment Created",
-"Package Collected",
-"Arrived at Transit Center"
-]
-}
-
-};
+let shipments = await response.json();
 
 
-if(shipments[number]){
+let shipment = shipments.find(
+s => s.tracking === number
+);
 
-var s = shipments[number];
 
-document.getElementById("result").innerHTML =
+if(shipment){
 
-"<h3>Shipment Details</h3>"+
-"<p><b>Status:</b> "+s.status+"</p>"+
-"<p><b>Location:</b> "+s.location+"</p>"+
-"<p><b>Expected Arrival:</b> "+s.arrival+"</p>"+
-"<h4>History</h4>"+
-s.history.map(x=>"<p>✓ "+x+"</p>").join("");
+document.getElementById("result").innerHTML = `
+
+<h3>Shipment Details</h3>
+
+<p><b>Customer:</b> ${shipment.customer}</p>
+
+<p><b>Status:</b> ${shipment.status}</p>
+
+<p><b>Location:</b> ${shipment.location}</p>
+
+<p><b>Arrival:</b> ${shipment.arrival}</p>
+
+<h4>History</h4>
+
+${shipment.history.map(
+x => `<p>✓ ${x}</p>`
+).join("")}
+
+`;
 
 }
 
@@ -106,7 +48,3 @@ document.getElementById("result").innerHTML =
 }
 
 </script>
-
-
-</body>
-</html>
