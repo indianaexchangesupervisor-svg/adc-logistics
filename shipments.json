@@ -1,39 +1,29 @@
-{
-  "tracking": "ADC-UKIN-260729-9184",
-  "customer": "RAKESH R",
-  "sender": "Dr JAMES",
-  "origin": "England",
-  "destination": "Layathuparambu, Vellakinar, Alappuzha 688001, India",
-  "status": "In Transit",
-  "location": "New Delhi International Airport",
-  "arrival": "30/07/2026",
-  "contents": [
-    "iPhone XS Max",
-    "Wrist Watch",
-    "Gold Ring",
-    "Gold Necklace",
-    "Handbag",
-    "Gold Chain",
-    "Women's Shoes",
-    "Soap and Perfume",
-    "Jewellery"
-  ],
-  "insuredValue": "$70,000",
-  "history": [
-    {
-      "date": "29/07/2026",
-      "time": "09:00 AM",
-      "message": "Shipment dispatched from England."
-    },
-    {
-      "date": "29/07/2026",
-      "time": "10:30 AM",
-      "message": "Package is on the way from England to India."
-    },
-    {
-      "date": "29/07/2026",
-      "time": "04:45 PM",
-      "message": "Shipment arrived at New Delhi International Airport."
-    }
-  ]
-}
+[
+  {
+    "tracking": "ADC-UKIN-260729-9184",
+    "customer": "RAKESH R",
+    "sender": "Dr JAMES",
+    "origin": "England",
+    "destination": "Layathuparambu, Vellakinar, Alappuzha 688001, India",
+    "status": "In Transit",
+    "location": "New Delhi International Airport",
+    "arrival": "30/07/2026",
+    "items": [
+      "iPhone XS Max",
+      "Wrist Watch",
+      "Gold Ring",
+      "Gold Necklace",
+      "Handbag",
+      "Gold Chain",
+      "Women's Shoes",
+      "Soap and Perfume",
+      "Jewellery"
+    ],
+    "insuredValue": "$70,000",
+    "history": [
+      "Shipment dispatched from England.",
+      "Package is on the way from England to India.",
+      "Shipment arrived at New Delhi International Airport."
+    ]
+  }
+]
