@@ -4,40 +4,67 @@
 <title>ADC Logistics Tracking</title>
 
 <style>
-body{
-font-family:Arial, sans-serif;
-background:#f2f2f2;
-text-align:center;
-padding:40px;
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    text-align: center;
+    padding: 40px;
 }
 
-.container{
-background:white;
-max-width:500px;
-margin:auto;
-padding:30px;
-border-radius:10px;
+.container {
+    background: white;
+    max-width: 550px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 12px;
 }
 
-input{
-width:90%;
-padding:12px;
-font-size:16px;
+.header {
+    background: #003366;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-button{
-margin-top:15px;
-padding:12px 25px;
-background:#0066cc;
-color:white;
-border:none;
-cursor:pointer;
-font-size:16px;
+input {
+    width: 90%;
+    padding: 12px;
+    margin-top: 20px;
+    font-size: 16px;
 }
 
-#result{
-margin-top:20px;
-text-align:left;
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    background: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #004c99;
+}
+
+#result {
+    margin-top: 25px;
+    text-align: left;
+}
+
+.card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    background: #fafafa;
+}
+
+.status {
+    background: green;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 </style>
 
@@ -47,7 +74,7 @@ text-align:left;
 
 <div class="container">
 
-<div style="background:#003366;color:white;padding:20px;border-radius:10px;margin-bottom:20px;">
+<div class="header">
 <h1>🚚 ADC Logistics</h1>
 <p>Fast • Secure • Worldwide Delivery</p>
 </div>
@@ -71,79 +98,143 @@ Track Shipment
 
 async function trackShipment(){
 
-let number = document.getElementById("tracking").value.trim();
+const result = document.getElementById("result");
 
+let number = document
+.getElementById("tracking")
+.value
+.trim();
+
+
+if(number === ""){
+result.innerHTML =
+"<p style='color:red;'>Please enter a tracking number.</p>";
+return;
+}
+
+
+try {
 
 let response = await fetch("shipments.json");
+
+
+if(!response.ok){
+throw new Error("Shipment database could not be loaded.");
+}
+
 
 let shipments = await response.json();
 
 
-try {
-    let shipment = shipments.find(item => item.tracking === number);
+let shipment = shipments.find(
+item => item.tracking.trim() === number
+);
 
-    if (!shipment) {
-        document.getElementById("result").innerHTML =
-            "<p>Tracking number not found.</p>";
-        return;
-    }
 
-    // Your existing code here...
 
-} catch (e) {
-    document.getElementById("result").innerHTML =
-        "<p style='color:red'>Error: " + e.message + "</p>";
+if(!shipment){
+
+result.innerHTML =
+"<p style='color:red;'>Tracking number not found.</p>";
+
+return;
+
 }
 
 
-if(shipment){
 
-document.getElementById("result").innerHTML = `
+result.innerHTML = `
 
-<h2 style="color:#003366;">Shipment Details</h2>
+<h2 style="color:#003366;">
+Shipment Details
+</h2>
 
-<div style="border:1px solid #ddd;border-radius:10px;padding:15px;background:#fafafa;">
 
-<p><b>Tracking Number:</b> ${shipment.tracking}</p>
+<div class="card">
 
-<p><b>Status:</b> <span style="background:green;color:white;padding:5px 10px;border-radius:5px;">${shipment.status}</span></p>
 
-<p><b>Customer:</b> ${shipment.customer}</p>
+<p><b>Tracking Number:</b>
+${shipment.tracking}
+</p>
 
-<p><b>From:</b> ${shipment.origin}</p>
 
-<p><b>To:</b> ${shipment.destination}</p>
+<p><b>Status:</b>
+<span class="status">
+${shipment.status}
+</span>
+</p>
 
-<p><b>Current Location:</b> ${shipment.location}</p>
 
-<p><b>Expected Arrival:</b> ${shipment.arrival}</p>
-<h3>📦 Package Contents</h3>
+<p><b>Customer:</b>
+${shipment.customer}
+</p>
+
+
+<p><b>Sender:</b>
+${shipment.sender}
+</p>
+
+
+<p><b>From:</b>
+${shipment.origin}
+</p>
+
+
+<p><b>Destination:</b>
+${shipment.destination}
+</p>
+
+
+<p><b>Current Location:</b>
+${shipment.location}
+</p>
+
+
+<p><b>Expected Delivery:</b>
+${shipment.arrival}
+</p>
+
+
+<h3>📦 Package Items</h3>
 
 <ul>
-${shipment.items.map(item => `<li>${item}</li>`).join("")}
+
+${shipment.items.map(item =>
+`<li>${item}</li>`
+).join("")}
+
 </ul>
 
-<hr>
-<hr>
 
 <h3>Shipment History</h3>
 
-${shipment.history.map(h => `<p>✔ ${h}</p>`).join("")}
+
+${shipment.history.map(item =>
+`<p>✔ ${item}</p>`
+).join("")}
+
 
 </div>
 
 `;
-}
-else{
 
-document.getElementById("result").innerHTML =
-"<p>Tracking number not found.</p>";
+
+
+}
+
+catch(error){
+
+result.innerHTML =
+"<p style='color:red;'>Error: "
++ error.message +
+"</p>";
 
 }
 
 }
 
 </script>
+
 
 </body>
 </html>
