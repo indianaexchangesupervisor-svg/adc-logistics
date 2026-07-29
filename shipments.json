@@ -1,36 +1,39 @@
-[
-  {
-    "tracking": "ADC-UKIN-260728-7845",
-    "customer": "Dhanya Unni",
-    "sender": "Dr Wilson Scott",
-    "origin": "England",
-    "destination": "India",
-    "status": "Out for Delivery",
-    "location": "New Delhi International Airport",
-    "arrival": "28 July 2026",
-    "address": "Union Bank of India, Kokkayar Branch, Koottikkal P.O., Mundakayam-686514, Kottayam District, Kerala",
-    "phone": "+91 97475 81668",
-    "items": [
-      "Apple iPhone XS Max",
-      "Wrist Watch",
-      "Gold Ring",
-      "Gold Necklace",
-      "Women's Handbag",
-      "Gold Chain",
-      "Women's Shoes",
-      "Soap",
-      "Perfume",
-      "Jewellery",
-      "Sealed Envelope (Declared by Sender)"
-    ],
-    "history": [
-      "Shipment Created",
-      "Picked Up in England",
-      "Export Clearance Completed",
-      "Departed England",
-      "Arrived at New Delhi International Airport",
-      "Customs Processing",
-      "Out for Delivery"
-    ]
-  }
-]
+{
+  "tracking": "ADC-UKIN-260729-9184",
+  "customer": "RAKESH R",
+  "sender": "Dr JAMES",
+  "origin": "England",
+  "destination": "Layathuparambu, Vellakinar, Alappuzha 688001, India",
+  "status": "In Transit",
+  "location": "New Delhi International Airport",
+  "arrival": "30/07/2026",
+  "contents": [
+    "iPhone XS Max",
+    "Wrist Watch",
+    "Gold Ring",
+    "Gold Necklace",
+    "Handbag",
+    "Gold Chain",
+    "Women's Shoes",
+    "Soap and Perfume",
+    "Jewellery"
+  ],
+  "insuredValue": "$70,000",
+  "history": [
+    {
+      "date": "29/07/2026",
+      "time": "09:00 AM",
+      "message": "Shipment dispatched from England."
+    },
+    {
+      "date": "29/07/2026",
+      "time": "10:30 AM",
+      "message": "Package is on the way from England to India."
+    },
+    {
+      "date": "29/07/2026",
+      "time": "04:45 PM",
+      "message": "Shipment arrived at New Delhi International Airport."
+    }
+  ]
+}
