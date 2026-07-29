@@ -79,9 +79,21 @@ let response = await fetch("shipments.json");
 let shipments = await response.json();
 
 
-let shipment = shipments.find(
-item => item.tracking === number
-);
+try {
+    let shipment = shipments.find(item => item.tracking === number);
+
+    if (!shipment) {
+        document.getElementById("result").innerHTML =
+            "<p>Tracking number not found.</p>";
+        return;
+    }
+
+    // Your existing code here...
+
+} catch (e) {
+    document.getElementById("result").innerHTML =
+        "<p style='color:red'>Error: " + e.message + "</p>";
+}
 
 
 if(shipment){
