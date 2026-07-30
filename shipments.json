@@ -1,13 +1,15 @@
 [
   {
-    "tracking": "ADC-UKIN-260729-9184",
-    "customer": "RAKESH R",
-    "sender": "Dr JAMES",
+    "tracking": "ADC-UKIN-260730-4721",
+    "customer": "ASHITHA MANOJ",
+    "phone": "+919400376104",
+    "sender": "DR JAMES",
     "origin": "England",
-    "destination": "Layathuparambu, Vellakinar, Alappuzha 688001, India",
-    "status": "In Transit",
-    "location": "New Delhi International Airport",
-    "arrival": "30/07/2026",
+    "destination": "VEGASSERY (H), EDAPPATTA, MALAPPURAM DISTRICT, KERALA 679326, INDIA",
+    "status": "On the way to New Delhi International Airport, India",
+    "location": "India",
+    "arrival": "31/07/2026",
+    "arrivalTime": "9:00 AM",
     "items": [
       "iPhone XS Max",
       "Wrist Watch",
@@ -22,8 +24,8 @@
     "insuredValue": "$70,000",
     "history": [
       "Shipment dispatched from England.",
-      "Package is on the way from England to India.",
-      "Shipment arrived at New Delhi International Airport."
+      "Package departed the United Kingdom.",
+      "Shipment is on the way to New Delhi International Airport, India."
     ]
   }
 ]
