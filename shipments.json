@@ -6,8 +6,8 @@
     "sender": "DR JAMES",
     "origin": "England",
     "destination": "VEGASSERY (H), EDAPPATTA, MALAPPURAM DISTRICT, KERALA 679326, INDIA",
-    "status": "On the way to New Delhi International Airport, India",
-    "location": "India",
+    "status": "In New Delhi International Airport, India",
+    "location": "New Delhi International Airport, India",
     "arrival": "31/07/2026",
     "arrivalTime": "9:00 AM",
     "items": [
@@ -24,8 +24,9 @@
     "insuredValue": "$70,000",
     "history": [
       "Shipment dispatched from England.",
-      "Package departed the United Kingdom.",
-      "Shipment is on the way to New Delhi International Airport, India."
+      "Shipment departed the United Kingdom.",
+      "Shipment arrived at New Delhi International Airport, India.",
+      "Shipment is awaiting customs clearance before being forwarded to Kerala."
     ]
   }
 ]
