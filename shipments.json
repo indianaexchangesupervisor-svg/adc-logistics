@@ -1,13 +1,13 @@
 [
   {
-    "tracking": "ADC-UKIN-260730-4721",
+    "tracking": "ADC-UKIN-260731-8459",
     "customer": "ASHITHA MANOJ",
     "phone": "+919400376104",
     "sender": "DR JAMES",
     "origin": "England",
     "destination": "VEGASSERY (H), EDAPPATTA, MALAPPURAM DISTRICT, KERALA 679326, INDIA",
-    "status": "In New Delhi International Airport, India",
-    "location": "New Delhi International Airport, India",
+    "status": "Arrived at New Delhi International Airport",
+    "location": "New Delhi International Airport, New Delhi, India",
     "arrival": "31/07/2026",
     "arrivalTime": "9:00 AM",
     "items": [
@@ -23,10 +23,11 @@
     ],
     "insuredValue": "$70,000",
     "history": [
+      "Shipment created in England.",
       "Shipment dispatched from England.",
       "Shipment departed the United Kingdom.",
-      "Shipment arrived at New Delhi International Airport, India.",
-      "Shipment is awaiting customs clearance before being forwarded to Kerala."
+      "Shipment arrived at New Delhi International Airport.",
+      "Shipment is awaiting customs inspection before forwarding to Kerala."
     ]
   }
 ]
