@@ -1,33 +1,32 @@
-[
-  {
-    "tracking": "ADC-UKIN-260731-8459",
-    "customer": "Ansy N A",
-    "phone": "+91 6282621220",
-    "sender": "DR JAMES",
-    "origin": "England",
-    "destination": "Naduvil (H) Nayathode Angamaly Ernakulam Dst/Kerala, India) Pin: 683572",
-    "status": "Arrived at New Delhi International Airport",
-    "location": "New Delhi International Airport, New Delhi, India",
-    "arrival": "31/07/2026",
-    "arrivalTime": "9:00 AM",
-    "items": [
-      "iPhone XS Max",
-      "Wrist Watch",
-      "Gold Ring",
-      "Gold Necklace",
-      "Handbag",
-      "Gold Chain",
-      "Women's Shoes",
-      "Soap and Perfume",
-      "Jewellery"
-    ],
-    "insuredValue": "$70,000",
-    "history": [
-      "Shipment created in England.",
-      "Shipment dispatched from England.",
-      "Shipment departed the United Kingdom.",
-      "Shipment arrived at New Delhi International Airport.",
-      "Shipment is awaiting customs inspection before forwarding to Kerala."
-    ]
-  }
-]
+,
+{
+  "tracking": "ADC-UKIN-260803-2741",
+  "customer": "Ansy N A",
+  "phone": "+91 6282621220",
+  "sender": "Dr James",
+  "origin": "UK",
+  "destination": "Naduvil (H) Nayathode Angamaly Ernakulam Dst/Kerala, India) Pin: 683572",
+  "status": "Packages in New Delhi international airport now you will be custom charges before your package will be delivered in your home address in Kerala",
+  "location": "India",
+  "arrival": "03/08/2026",
+  "arrivalTime": "9:30am",
+  "items": [
+    "iPhone XS Max",
+    "Wrist Watch",
+    "Gold Ring",
+    "Gold Necklace",
+    "Handbag",
+    "Gold Chain",
+    "Women's Shoes",
+    "Soap and Perfume",
+    "Jewellery"
+  ],
+  "insuredValue": "$70,000",
+  "history": [
+    "Shipment created in UK.",
+    "Shipment dispatched from UK.",
+    "Shipment departed the United Kingdom.",
+    "Shipment arrived at New Delhi International Airport.",
+    "Awaiting customs charges before delivery to Kerala home address."
+  ]
+}
