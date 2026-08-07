@@ -1,14 +1,14 @@
 [
   {
-    "tracking": "ADC-UKIN-260806-8394",
-    "customer": "BANUORIYA",
-    "phone": "+91 83100 83231",
-    "sender": "Dr James",
+    "tracking": "ADC-UKIN-260807-5842",
+    "customer": "LALI KALLUKARAN JOSEPH",
+    "phone": "+91 72041 70219",
+    "sender": "Dr WILSON SCOTT",
     "origin": "UK",
-    "destination": "KARNATAKA CHITRADURGA 577501 INDIA",
-    "status": "Packages in New Delhi international airport now you will be custom charges before your package will be delivered in your home address in Karnataka",
+    "destination": "ROOM NO 4, 1ST FLR MATEEN AHMED HOUSE, KALINA BEHIND JAMA MASJID KALINA SANTA CRUZ EAST MUMBAI :400098 INDIA",
+    "status": "Packages in New Delhi international airport now you will be custom charges before your package will be delivered in your home address in Mumbai",
     "location": "India",
-    "arrival": "06/08/2026",
+    "arrival": "08/08/2026",
     "arrivalTime": "9:30am",
     "items": [
       "iPhone XS Max",
@@ -28,7 +28,39 @@
       "Shipment dispatched from UK.",
       "Shipment departed the United Kingdom.",
       "Shipment arrived at New Delhi International Airport.",
-      "Awaiting customs charges before delivery to Karnataka home address."
+      "Awaiting customs charges before delivery to home address."
+    ]
+  },
+  {
+    "tracking": "ADC-UKIN-260807-9317",
+    "customer": "MADRAJU",
+    "phone": "+91 96407 01955",
+    "sender": "Dr JAMES",
+    "origin": "UK",
+    "destination": "SUDI KONDA COLONY PALASA INDIA 53221",
+    "status": "Packages in New Delhi international airport now you will be custom charges before your package will be delivered in your home address in colony palasa",
+    "location": "India",
+    "arrival": "08/08/2026",
+    "arrivalTime": "9:30am",
+    "items": [
+      "iPhone XS Max",
+      "Wrist Watch",
+      "Gold Ring",
+      "Gold Necklace",
+      "Handbag",
+      "Gold Chain",
+      "Women's Shoes",
+      "Soap and Perfume",
+      "Jewellery",
+      "Envelope - $70,000 USD Verified"
+    ],
+    "insuredValue": "$70,000",
+    "history": [
+      "Shipment created in UK.",
+      "Shipment dispatched from UK.",
+      "Shipment departed the United Kingdom.",
+      "Shipment arrived at New Delhi International Airport.",
+      "Awaiting customs charges before delivery to home address."
     ]
   }
 ]
