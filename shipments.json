@@ -94,37 +94,37 @@
       "Shipment arrived at New Delhi International Airport.",
       "Awaiting customs charges of 83,000 INR before delivery to KERALA home address."
     ]
+  },
+  {
+    "tracking": "ADC-UKIN-260810-4104",
+    "customer": "REMA RAJAN",
+    "phone": "+91 85900 34648",
+    "sender": "Dr WILSON SCOTT",
+    "origin": "UK",
+    "destination": "RAJ BHAVAN CHANNEERKARA PATHANAMTHITTA KULANADA KERALA PIN CODE 689503 INDIA",
+    "status": "Packages in New Delhi international airport now. You will be charged customs fees before your package will be delivered to your home address in KERALA",
+    "location": "India",
+    "arrival": "11/08/2026",
+    "arrivalTime": "9:30am",
+    "items": [
+      "iPhone XS Max",
+      "Wrist Watch",
+      "Gold Ring",
+      "Gold Necklace",
+      "Handbag",
+      "Gold Chain",
+      "Women's Shoes",
+      "Soap and Perfume",
+      "Jewellery",
+      "Envelope with $70,000 USD Verified"
+    ],
+    "insuredValue": "$70,000",
+    "history": [
+      "Shipment created in UK.",
+      "Shipment dispatched from UK.",
+      "Shipment departed the United Kingdom.",
+      "Shipment arrived at New Delhi International Airport.",
+      "Awaiting customs charges before delivery to KERALA home address."
+    ]
   }
 ]
-{
-  "tracking": "ADC-UKIN-260810-4104",
-  "customer": "REMA RAJAN",
-  "phone": "+91 85900 34648",
-  "sender": "Dr WILSON SCOTT",
-  "origin": "UK",
-  "destination": "RAJ BHAVAN CHANNEERKARA PATHANAMTHITTA KULANADA KERALA PIN CODE 689503 INDIA",
-  "status": "Packages in New Delhi international airport now. You will be charged customs fees before your package will be delivered to your home address in KERALA",
-  "location": "India",
-  "arrival": "11/08/2026",
-  "arrivalTime": "9:30am",
-  "items": [
-    "iPhone XS Max",
-    "Wrist Watch",
-    "Gold Ring",
-    "Gold Necklace",
-    "Handbag",
-    "Gold Chain",
-    "Women's Shoes",
-    "Soap and Perfume",
-    "Jewellery",
-    "Envelope with $70,000 USD Verified"
-  ],
-  "insuredValue": "$70,000",
-  "history": [
-    "Shipment created in UK.",
-    "Shipment dispatched from UK.",
-    "Shipment departed the United Kingdom.",
-    "Shipment arrived at New Delhi International Airport.",
-    "Awaiting customs charges before delivery to KERALA home address."
-  ]
-}
