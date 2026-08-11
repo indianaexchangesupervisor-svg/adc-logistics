@@ -1,46 +1,14 @@
 [
   {
-    "tracking": "ADC-UKIN-260810-4101",
-    "customer": "S. MALADEVI",
-    "phone": "+91 96773 96753",
+    "tracking": "ADC-UKIN-260808-2743",
+    "customer": "A. K GEETHARANI",
+    "phone": "+91 98955 83605",
     "sender": "Dr WILSON SCOTT",
     "origin": "UK",
-    "destination": "PLOT NO. 21 DOOR NO. 5/1005, POONCHOLAI NAGER, FIRST CROSS MUNNESHWER EXT, HOSUR, PIN CODE 635109 INDIA",
-    "status": "Packages in INDIA international airport now. You will be charged customs fees before your package will be delivered to your home address in HOSUR",
-    "location": "India",
-    "arrival": "11/08/2026",
-    "arrivalTime": "9:30am",
-    "items": [
-      "iPhone XS Max",
-      "Wrist Watch",
-      "Gold Ring",
-      "Gold Necklace",
-      "Handbag",
-      "Gold Chain",
-      "Women's Shoes",
-      "Soap and Perfume",
-      "Jewellery",
-      "Envelope with $70,000 USD Verified"
-    ],
-    "insuredValue": "$70,000",
-    "history": [
-      "Shipment created in UK.",
-      "Shipment dispatched from UK.",
-      "Shipment departed the United Kingdom.",
-      "Shipment arrived at India International Airport.",
-      "Awaiting customs charges before delivery to HOSUR home address."
-    ]
-  },
-  {
-    "tracking": "ADC-UKIN-260810-4102",
-    "customer": "SHANTA",
-    "phone": "+91 95446 88812",
-    "sender": "Dr WILSON SCOTT",
-    "origin": "UK",
-    "destination": "SULTAN BATHERY ROAD PULPALLY PARAKKADAVU, PU SASIMALA ACCOMMODATION IN PARAKKADAVU ESSENCE, WAYANAD KERALA INDIA PIN CODE 673579",
+    "destination": "NANDHANAM PAYATTUVILA P.O BALARAMAPURAM THIRUVANTHAPURAM KERALA 695501 INDIA",
     "status": "Packages in New Delhi international airport now. You will be charged customs fees before your package will be delivered to your home address in KERALA",
     "location": "India",
-    "arrival": "11/08/2026",
+    "arrival": "12/08/2026",
     "arrivalTime": "9:30am",
     "items": [
       "iPhone XS Max",
@@ -60,51 +28,19 @@
       "Shipment dispatched from UK.",
       "Shipment departed the United Kingdom.",
       "Shipment arrived at New Delhi International Airport.",
-      "Awaiting customs charges before delivery to KERALA home address."
+      "Awaiting customs charges of 27,000 INR before delivery to KERALA home address."
     ]
   },
   {
-    "tracking": "ADC-UKIN-260810-4103",
-    "customer": "SUMA. M. T",
-    "phone": "+91 62826 16345",
-    "sender": "Dr JAMES",
-    "origin": "UK",
-    "destination": "KALLUMOOLAYIL HOUSE, ERAVIPEROOR P.O, ERAVIPEROOR PATHANAMTHITTA KERALA PIN CODE 689542 INDIA",
-    "status": "Packages in New Delhi international airport now. You will be charged customs fees before your package will be delivered to your home address in KERALA",
-    "location": "India",
-    "arrival": "11/08/2026",
-    "arrivalTime": "9:30am",
-    "items": [
-      "iPhone XS Max",
-      "Wrist Watch",
-      "Gold Ring",
-      "Gold Necklace",
-      "Handbag",
-      "Gold Chain",
-      "Women's Shoes",
-      "Soap and Perfume",
-      "Jewellery",
-      "Envelope with $70,000 USD Verified"
-    ],
-    "insuredValue": "$70,000",
-    "history": [
-      "Shipment created in UK.",
-      "Shipment dispatched from UK.",
-      "Shipment departed the United Kingdom.",
-      "Shipment arrived at New Delhi International Airport.",
-      "Awaiting customs charges of 83,000 INR before delivery to KERALA home address."
-    ]
-  },
-  {
-    "tracking": "ADC-UKIN-260810-4104",
-    "customer": "MOHAN MOTHI",
-    "phone": "+91 81119 54853",
+    "tracking": "ADC-UKIN-260808-2744",
+    "customer": "SONIAMBIKA",
+    "phone": "+91 98469 57121",
     "sender": "Dr WILSON SCOTT",
     "origin": "UK",
-    "destination": "AJITHA NILAYAM MARIOR. P. O. PATHANAPURAM KERALA PIN CODE 692524 INDIA",
-    "status": "Packages in New Delhi international airport now. You will be charged customs fees before your package will be delivered to your home address in KERALA",
+    "destination": "VIJAYALAKSHMI ACCOUNTS AND AUDIT ESTATE, MOTINAGAR, OPPOSITE TO RED FIELD, SHILLONG, MEGHALAYA PIN CODE - 793014 INDIA",
+    "status": "Packages in New Delhi international airport now. You will be charged customs fees before your package will be delivered to your home address in SHILLONG MEGHALAYA",
     "location": "India",
-    "arrival": "11/08/2026",
+    "arrival": "12/08/2026",
     "arrivalTime": "9:30am",
     "items": [
       "iPhone XS Max",
@@ -124,7 +60,7 @@
       "Shipment dispatched from UK.",
       "Shipment departed the United Kingdom.",
       "Shipment arrived at New Delhi International Airport.",
-      "Awaiting customs charges before delivery to KERALA home address."
+      "Awaiting customs charges of 34,000 INR before delivery to SHILLONG MEGHALAYA home address."
     ]
   }
 ]
