@@ -1,66 +1,33 @@
-[
-  {
-    "tracking": "ADC-UKIN-260808-2743",
-    "customer": "A. K GEETHARANI",
-    "phone": "+91 98955 83605",
-    "sender": "Dr WILSON SCOTT",
-    "origin": "UK",
-    "destination": "NANDHANAM PAYATTUVILA P.O BALARAMAPURAM THIRUVANTHAPURAM KERALA 695501 INDIA",
-    "status": "Packages in New Delhi international airport now. You will be charged customs fees before your package will be delivered to your home address in KERALA",
-    "location": "India",
-    "arrival": "12/08/2026",
-    "arrivalTime": "9:30am",
-    "items": [
-      "iPhone XS Max",
-      "Wrist Watch",
-      "Gold Ring",
-      "Gold Necklace",
-      "Handbag",
-      "Gold Chain",
-      "Women's Shoes",
-      "Soap and Perfume",
-      "Jewellery",
-      "Envelope with $70,000 USD Verified"
-    ],
-    "insuredValue": "$70,000",
-    "history": [
-      "Shipment created in UK.",
-      "Shipment dispatched from UK.",
-      "Shipment departed the United Kingdom.",
-      "Shipment arrived at New Delhi International Airport.",
-      "Awaiting customs charges of 27,000 INR before delivery to KERALA home address."
-    ]
-  },
-  {
-    "tracking": "ADC-UKIN-260808-2744",
-    "customer": "SONIAMBIKA",
-    "phone": "+91 98469 57121",
-    "sender": "Dr WILSON SCOTT",
-    "origin": "UK",
-    "destination": "VIJAYALAKSHMI ACCOUNTS AND AUDIT ESTATE, MOTINAGAR, OPPOSITE TO RED FIELD, SHILLONG, MEGHALAYA PIN CODE - 793014 INDIA",
-    "status": "Packages in New Delhi international airport now. You will be charged customs fees before your package will be delivered to your home address in SHILLONG MEGHALAYA",
-    "location": "India",
-    "arrival": "12/08/2026",
-    "arrivalTime": "9:30am",
-    "items": [
-      "iPhone XS Max",
-      "Wrist Watch",
-      "Gold Ring",
-      "Gold Necklace",
-      "Handbag",
-      "Gold Chain",
-      "Women's Shoes",
-      "Soap and Perfume",
-      "Jewellery",
-      "Envelope with $70,000 USD which is more than 28 lakhs Verified"
-    ],
-    "insuredValue": "$70,000",
-    "history": [
-      "Shipment created in UK.",
-      "Shipment dispatched from UK.",
-      "Shipment departed the United Kingdom.",
-      "Shipment arrived at New Delhi International Airport.",
-      "Awaiting customs charges of 34,000 INR before delivery to SHILLONG MEGHALAYA home address."
-    ]
-  }
-]
+{
+  "shipmentId": "SHIPMENT 1",
+  "tracking": "ADC-UKIN-260814-2742",
+  "sender": "Dr JAMES",
+  "origin": "UK",
+  "customer": "ABHIRAMI S",
+  "phone": "+91 62826 16631",
+  "destination": "BHAVA KANNAMPARA MOONU MUKKU P.O KERALA, TRIVANDRUM 695609",
+  "status": "Packages in New Delhi international airport now. You will be charged customs fees before your package will be delivered to your home address in KERALA",
+  "location": "India",
+  "arrival": "14/08/2026",
+  "arrivalTime": "9:30am",
+  "insuredValue": "$70,000",
+  "items": [
+    "iPhone XS Max",
+    "Wrist Watch",
+    "Gold Ring",
+    "Gold Necklace",
+    "Handbag",
+    "Gold Chain",
+    "Women's Shoes",
+    "Soap and Perfume",
+    "Jewellery",
+    "Envelope with $70,000"
+  ],
+  "history": [
+    "Shipment created in UK.",
+    "Shipment dispatched from UK.",
+    "Shipment departed the United Kingdom.",
+    "Shipment arrived at New Delhi International Airport.",
+    "Awaiting customs charges of 83,000 INR before delivery to KERALA home address."
+  ]
+}
