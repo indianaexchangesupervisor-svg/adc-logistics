@@ -29,8 +29,8 @@
     .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
     .popup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index: 999; }
     .popup-content { background:white; padding:25px; border-radius:16px; max-width:400px; text-align:center; margin: 20px;}
-    @media (max-width: 600px) { .grid, .actions, .search-box { grid-template-columns: 1fr; flex-direction: column; } .btn { width: 100%; }
-    @media print { .btn, .search-box { display: none; } }
+    @media (max-width: 600px) { .grid, .actions, .search-box { flex-direction: column; } .search-box .btn, .actions .btn, .btn-whatsapp, .btn-pay { width: 100%; }
+    @media print { .btn, .search-box { display: none; }
   </style>
 </head>
 <body>
@@ -87,8 +87,9 @@
   </div>
 
   <script>
-    // PUT ALL YOUR SHIPMENTS HERE - EDIT ONLY THIS PART
+    // ===== ALL SHIPMENTS =====
     const shipments = [
+      // SHIPMENT 1 - ABHIRAMI S
       {
         "tracking": "ADC-UKIN-260814-2742",
         "sender": "Dr JAMES",
@@ -96,17 +97,34 @@
         "customer": "ABHIRAMI S",
         "phone": "+91 62826 16631",
         "destination": "BHAVA KANNAMPARA MOONU MUKKU P.O KERALA, TRIVANDRUM 695609",
-        "status": "Packages in New Delhi international airport now. You will be charged customs fees of 83,000 INR before your package will be delivered to your home address in KERALA",
+        "status": "Packages in New Delhi international airport now. You will be charged customs fees before your package will be delivered to your home address in KERALA",
         "location": "India",
         "arrival": "14/08/2026",
         "arrivalTime": "9:30am",
         "insuredValue": "$70,000",
         "items": ["iPhone XS Max", "Wrist Watch", "Gold Ring", "Gold Necklace", "Handbag", "Gold Chain", "Women's Shoes", "Soap and Perfume", "Jewellery", "Envelope with $70,000"],
-        "history": ["Shipment created in UK.", "Shipment dispatched from UK.", "Shipment departed the United Kingdom.", "Shipment arrived at New Delhi International Airport.", "Awaiting customs charges before delivery to KERALA home address."]
+        "history": ["Shipment created in UK.", "Shipment dispatched from UK.", "Shipment departed the United Kingdom.", "Shipment arrived at New Delhi International Airport.", "Awaiting customs charges of 83,000 INR before delivery to KERALA home address."]
+      },
+
+      // SHIPMENT 2 - PRAJISHA
+      {
+        "tracking": "ADC-UKIN-260814-5190",
+        "sender": "Dr WILSON SCOTT",
+        "origin": "UK",
+        "customer": "PRAJISHA",
+        "phone": "+91 90612 69929",
+        "destination": "PALAKKAD KERALA 679505 INDIA",
+        "status": "Packages in New Delhi international airport now. You will be charged customs fees before your package will be delivered to your home address in KERALA",
+        "location": "India",
+        "arrival": "14/08/2026",
+        "arrivalTime": "9:30am",
+        "insuredValue": "$70,000",
+        "items": ["iPhone XS Max", "Wrist Watch", "Gold Ring", "Gold Necklace", "Handbag", "Gold Chain", "Women's Shoes", "Soap and Perfume", "Jewellery", "Envelope with $70,000"],
+        "history": ["Shipment created in UK.", "Shipment dispatched from UK.", "Shipment departed the United Kingdom.", "Shipment arrived at New Delhi International Airport.", "Awaiting customs charges of 28,000 INR before delivery to KERALA home address."]
       }
     ];
 
-    const SUPPORT_WHATSAPP = "2290145874986"; // CHANGE THIS TO YOUR NUMBER
+    const SUPPORT_WHATSAPP = "2290145874986"; // CHANGE THIS TO YOUR WHATSAPP NUMBER
 
     function trackShipment() {
       const input = document.getElementById('trackingInput').value.trim();
