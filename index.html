@@ -7,32 +7,30 @@
   <style>
     :root { --primary: #1e3a8a; --secondary: #2563eb; --danger: #dc2626; --success: #25D366; --bg: #f0f4f9; }
     * { box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 20px; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 15px; }
     .container { max-width: 800px; margin: auto; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
-    .header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 30px; text-align: center; }
-    .header h1 { margin: 0; font-size: 28px; }
-    .content { padding: 30px; }
+    .header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 25px 20px; text-align: center; }
+    .header h1 { margin: 0; font-size: 24px; }
+    .content { padding: 25px 20px; }
     .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
     input { flex: 1; padding: 14px; border: 2px solid #e5e7eb; border-radius: 10px; font-size: 15px; }
     input:focus { border-color: var(--secondary); outline: none; }
-    .btn { padding: 14px 24px; background: var(--secondary); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 15px; font-weight: 600; transition: 0.2s; text-decoration: none; text-align: center; display: inline-block; }
-    .btn:hover { background: #1d4ed8; transform: translateY(-1px); }
+    .btn { padding: 14px 24px; background: var(--secondary); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 15px; font-weight: 600; }
+    .btn:hover { background: #1d4ed8; }
     .btn-print { background: #059669; }
-    .btn-pay { background: var(--danger); width: 100%; margin-top: 20px; }
-    .btn-whatsapp { background: var(--success); width: 100%; margin-top: 10px; }
-    .btn-whatsapp:hover { background: #1ebe57; }
-    .result { margin-top: 25px; padding: 25px; border-radius: 12px; background: #f8fafc; border: 1px solid #e5e7eb; display: none; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-    .label { font-weight: 600; color: #4b5563; font-size: 13px; text-transform: uppercase; }
-    .value { color: #111827; font-size: 15px; margin-top: 3px; }
-    .badge { display: inline-block; padding: 6px 12px; background: #dbeafe; color: var(--primary); border-radius: 20px; font-size: 12px; font-weight: 600; }
+    .btn-pay { background: var(--danger); width: 100%; margin-top: 15px; }
+    .btn-whatsapp { background: var(--success); width: 100%; margin-top: 10px; text-decoration: none; color: white; }
+    .result { margin-top: 25px; padding: 20px; border-radius: 12px; background: #f8fafc; border: 1px solid #e5e7eb; display: none; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .label { font-weight: 600; color: #4b5563; font-size: 12px; text-transform: uppercase; }
+    .value { color: #111827; font-size: 14px; margin-top: 3px; }
     ul { padding-left: 20px; margin: 5px 0; }
     .error { color: var(--danger); font-weight: 600; }
     .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
     .popup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index: 999; }
-    .popup-content { background:white; padding:30px; border-radius:16px; max-width:420px; text-align:center; }
+    .popup-content { background:white; padding:25px; border-radius:16px; max-width:400px; text-align:center; margin: 20px;}
+    @media (max-width: 600px) { .grid, .actions, .search-box { grid-template-columns: 1fr; flex-direction: column; } .btn { width: 100%; }
     @media print { .btn, .search-box { display: none; } }
-    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .search-box, .actions { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -51,9 +49,7 @@
       <div id="errorMsg" class="error"></div>
 
       <div id="result" class="result">
-        <span class="badge" id="rStatusBadge">In Transit</span>
-        <h4 style="margin:15px 0;">Shipment Details</h4>
-        
+        <h4 style="margin:0 0 15px 0;">Shipment Details</h4>
         <div class="grid">
           <div><div class="label">Tracking Number</div><div class="value" id="rTracking"></div></div>
           <div><div class="label">Customer</div><div class="value" id="rCustomer"></div></div>
@@ -64,18 +60,15 @@
           <div><div class="label">Expected Arrival</div><div class="value" id="rArrival"></div></div>
           <div><div class="label">Insured Value</div><div class="value" id="rValue"></div></div>
         </div>
-
         <p style="margin-top:15px;"><span class="label">Status</span></p>
         <div class="value" id="rStatus"></div>
-
         <p style="margin-top:15px;"><span class="label">Items</span></p>
         <ul id="rItems"></ul>
-        
         <p style="margin-top:15px;"><span class="label">Shipment History</span></p>
         <ul id="rHistory"></ul>
 
         <div class="actions">
-          <button class="btn btn-print" onclick="window.print()">🖨️ Print Details</button>
+          <button class="btn btn-print" onclick="window.print()">🖨️ Print</button>
           <a class="btn btn-whatsapp" id="whatsappBtn" target="_blank">💬 Contact Support</a>
         </div>
         <button class="btn btn-pay" onclick="showPayPopup()">Pay Customs Fees</button>
@@ -87,27 +80,33 @@
     <div class="popup-content">
       <h3>Customs Clearance Fee</h3>
       <p>Your package is held at <span id="pLocation"></span> Airport.</p>
-      <p><b>Amount Due: $500 USD</b></p>
+      <p><b>Amount Due: $250 USD</b></p>
       <button class="btn btn-pay" onclick="alert('Redirecting to secure payment gateway...')">Proceed to Pay</button>
       <button class="btn" style="background:#6b7280; margin-top:10px;" onclick="closePayPopup()">Cancel</button>
     </div>
   </div>
 
   <script>
-    let shipments = [];
-    let currentShipment = null; // Store current shipment for whatsapp
-
-    // CHANGE THIS TO YOUR WHATSAPP NUMBER WITH COUNTRY CODE, NO +
-    const SUPPORT_WHATSAPP = "2290145874986"; 
-
-    async function loadShipments() {
-      try {
-        const response = await fetch('shipments.json');
-        shipments = await response.json();
-      } catch (e) {
-        document.getElementById('errorMsg').innerText = "Error: Could not load shipments.json. Make sure both files are in the same folder.";
+    // PUT ALL YOUR SHIPMENTS HERE - EDIT ONLY THIS PART
+    const shipments = [
+      {
+        "tracking": "ADC-UKIN-260814-2742",
+        "sender": "Dr JAMES",
+        "origin": "UK",
+        "customer": "ABHIRAMI S",
+        "phone": "+91 62826 16631",
+        "destination": "BHAVA KANNAMPARA MOONU MUKKU P.O KERALA, TRIVANDRUM 695609",
+        "status": "Packages in New Delhi international airport now. You will be charged customs fees of 83,000 INR before your package will be delivered to your home address in KERALA",
+        "location": "India",
+        "arrival": "14/08/2026",
+        "arrivalTime": "9:30am",
+        "insuredValue": "$70,000",
+        "items": ["iPhone XS Max", "Wrist Watch", "Gold Ring", "Gold Necklace", "Handbag", "Gold Chain", "Women's Shoes", "Soap and Perfume", "Jewellery", "Envelope with $70,000"],
+        "history": ["Shipment created in UK.", "Shipment dispatched from UK.", "Shipment departed the United Kingdom.", "Shipment arrived at New Delhi International Airport.", "Awaiting customs charges before delivery to KERALA home address."]
       }
-    }
+    ];
+
+    const SUPPORT_WHATSAPP = "2290145874986"; // CHANGE THIS TO YOUR NUMBER
 
     function trackShipment() {
       const input = document.getElementById('trackingInput').value.trim();
@@ -119,7 +118,6 @@
       if(input === ""){ errorMsg.innerText = "Please enter a tracking number"; return; }
 
       const shipment = shipments.find(s => s.tracking.toLowerCase() === input.toLowerCase());
-      currentShipment = shipment;
 
       if (shipment) {
         document.getElementById('rTracking').innerText = shipment.tracking;
@@ -135,8 +133,7 @@
         document.getElementById('rItems').innerHTML = shipment.items.map(i => `<li>${i}</li>`).join('');
         document.getElementById('rHistory').innerHTML = shipment.history.map(h => `<li>${h}</li>`).join('');
         
-        // Set WhatsApp Link
-        const message = `Hello ADC Support,%0A%0AI need help with my shipment.%0A%0ATracking: ${shipment.tracking}%0ACustomer: ${shipment.customer}%0AStatus: ${shipment.status}`;
+        const message = `Hello ADC Support,%0A%0AI need help with my shipment.%0A%0ATracking: ${shipment.tracking}%0ACustomer: ${shipment.customer}`;
         document.getElementById('whatsappBtn').href = `https://wa.me/${SUPPORT_WHATSAPP}?text=${message}`;
 
         resultDiv.style.display = "block";
@@ -147,8 +144,6 @@
 
     function showPayPopup() { document.getElementById('payPopup').style.display = 'flex'; }
     function closePayPopup() { document.getElementById('payPopup').style.display = 'none'; }
-
-    loadShipments();
   </script>
 </body>
 </html>
