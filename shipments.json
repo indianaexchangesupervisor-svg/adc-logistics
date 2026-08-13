@@ -1,5 +1,4 @@
 {
-  "shipmentId": "SHIPMENT 1",
   "tracking": "ADC-UKIN-260814-2742",
   "sender": "Dr JAMES",
   "origin": "UK",
@@ -13,17 +12,16 @@
   "insuredValue": "$70,000",
   "items": [
     "iPhone XS Max",
-    "Wrist Watch",
-    "Gold Ring",
-    "Gold Necklace",
-    "Handbag",
-    "Gold Chain",
-    "Women's Shoes",
-    "Soap and Perfume",
+    "Wrist Watch", 
+    "Gold Ring", 
+    "Gold Necklace", 
+    "Handbag", 
+    "Gold Chain", 
+    "Women's Shoes", 
+    "Soap and Perfume", 
     "Jewellery",
     "Envelope with $70,000"
   ],
-  "notes": "Including envelope of $70,000 verified",
   "history": [
     "Shipment created in UK.",
     "Shipment dispatched from UK.",
