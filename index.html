@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ADC Logistics - Professional Tracking</title>
   <style>
-    :root { --primary: #1e3a8a; --secondary: #2563eb; --danger: #dc2626; --bg: #f0f4f9; }
+    :root { --primary: #1e3a8a; --secondary: #2563eb; --danger: #dc2626; --success: #25D366; --bg: #f0f4f9; }
     * { box-sizing: border-box; }
     body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 20px; }
     .container { max-width: 800px; margin: auto; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
@@ -15,10 +15,12 @@
     .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
     input { flex: 1; padding: 14px; border: 2px solid #e5e7eb; border-radius: 10px; font-size: 15px; }
     input:focus { border-color: var(--secondary); outline: none; }
-    .btn { padding: 14px 24px; background: var(--secondary); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 15px; font-weight: 600; transition: 0.2s; }
+    .btn { padding: 14px 24px; background: var(--secondary); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 15px; font-weight: 600; transition: 0.2s; text-decoration: none; text-align: center; display: inline-block; }
     .btn:hover { background: #1d4ed8; transform: translateY(-1px); }
     .btn-print { background: #059669; }
     .btn-pay { background: var(--danger); width: 100%; margin-top: 20px; }
+    .btn-whatsapp { background: var(--success); width: 100%; margin-top: 10px; }
+    .btn-whatsapp:hover { background: #1ebe57; }
     .result { margin-top: 25px; padding: 25px; border-radius: 12px; background: #f8fafc; border: 1px solid #e5e7eb; display: none; }
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
     .label { font-weight: 600; color: #4b5563; font-size: 13px; text-transform: uppercase; }
@@ -26,8 +28,11 @@
     .badge { display: inline-block; padding: 6px 12px; background: #dbeafe; color: var(--primary); border-radius: 20px; font-size: 12px; font-weight: 600; }
     ul { padding-left: 20px; margin: 5px 0; }
     .error { color: var(--danger); font-weight: 600; }
-    .actions { display: flex; gap: 10px; margin-top: 15px; }
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+    .popup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index: 999; }
+    .popup-content { background:white; padding:30px; border-radius:16px; max-width:420px; text-align:center; }
     @media print { .btn, .search-box { display: none; } }
+    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .search-box, .actions { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -40,7 +45,7 @@
     <div class="content">
       <h3>Track Your Shipment</h3>
       <div class="search-box">
-        <input type="text" id="trackingInput" placeholder="Enter Tracking Number e.g. ADC-UK-0001">
+        <input type="text" id="trackingInput" placeholder="Enter Tracking Number">
         <button class="btn" onclick="trackShipment()">Track</button>
       </div>
       <div id="errorMsg" class="error"></div>
@@ -71,44 +76,41 @@
 
         <div class="actions">
           <button class="btn btn-print" onclick="window.print()">🖨️ Print Details</button>
-          <button class="btn btn-pay" onclick="showPayPopup()">Pay Customs Fees</button>
+          <a class="btn btn-whatsapp" id="whatsappBtn" target="_blank">💬 Contact Support</a>
         </div>
+        <button class="btn btn-pay" onclick="showPayPopup()">Pay Customs Fees</button>
       </div>
     </div>
   </div>
 
-  <div id="payPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
-    <div style="background:white; padding:30px; border-radius:16px; max-width:420px; text-align:center;">
+  <div id="payPopup" class="popup">
+    <div class="popup-content">
       <h3>Customs Clearance Fee</h3>
       <p>Your package is held at <span id="pLocation"></span> Airport.</p>
-      <p><b>Amount Due: $250 USD</b></p>
+      <p><b>Amount Due: $500 USD</b></p>
       <button class="btn btn-pay" onclick="alert('Redirecting to secure payment gateway...')">Proceed to Pay</button>
       <button class="btn" style="background:#6b7280; margin-top:10px;" onclick="closePayPopup()">Cancel</button>
     </div>
   </div>
 
   <script>
-    let shipments = []; // This will hold data from shipments.json
+    let shipments = [];
+    let currentShipment = null; // Store current shipment for whatsapp
 
-    // 1. Load shipments.json and auto-generate tracking numbers
+    // CHANGE THIS TO YOUR WHATSAPP NUMBER WITH COUNTRY CODE, NO +
+    const SUPPORT_WHATSAPP = "2290145874986"; 
+
     async function loadShipments() {
       try {
         const response = await fetch('shipments.json');
-        const data = await response.json();
-        
-        // Auto-generate tracking number for each shipment
-        shipments = data.map((s, index) => {
-          const countryCode = s.origin.substring(0,2).toUpperCase();
-          const tracking = `ADC-${countryCode}-${String(index + 1).padStart(4, '0')}`;
-          return { ...s, tracking };
-        });
+        shipments = await response.json();
       } catch (e) {
-        document.getElementById('errorMsg').innerText = "Error: Could not load shipments.json";
+        document.getElementById('errorMsg').innerText = "Error: Could not load shipments.json. Make sure both files are in the same folder.";
       }
     }
 
     function trackShipment() {
-      const input = document.getElementById('trackingInput').value.trim().toUpperCase();
+      const input = document.getElementById('trackingInput').value.trim();
       const errorMsg = document.getElementById('errorMsg');
       const resultDiv = document.getElementById('result');
       errorMsg.innerText = "";
@@ -116,7 +118,8 @@
 
       if(input === ""){ errorMsg.innerText = "Please enter a tracking number"; return; }
 
-      const shipment = shipments.find(s => s.tracking === input);
+      const shipment = shipments.find(s => s.tracking.toLowerCase() === input.toLowerCase());
+      currentShipment = shipment;
 
       if (shipment) {
         document.getElementById('rTracking').innerText = shipment.tracking;
@@ -131,6 +134,11 @@
         document.getElementById('pLocation').innerText = shipment.location;
         document.getElementById('rItems').innerHTML = shipment.items.map(i => `<li>${i}</li>`).join('');
         document.getElementById('rHistory').innerHTML = shipment.history.map(h => `<li>${h}</li>`).join('');
+        
+        // Set WhatsApp Link
+        const message = `Hello ADC Support,%0A%0AI need help with my shipment.%0A%0ATracking: ${shipment.tracking}%0ACustomer: ${shipment.customer}%0AStatus: ${shipment.status}`;
+        document.getElementById('whatsappBtn').href = `https://wa.me/${SUPPORT_WHATSAPP}?text=${message}`;
+
         resultDiv.style.display = "block";
       } else {
         errorMsg.innerText = "Tracking number not found";
@@ -140,7 +148,6 @@
     function showPayPopup() { document.getElementById('payPopup').style.display = 'flex'; }
     function closePayPopup() { document.getElementById('payPopup').style.display = 'none'; }
 
-    // Load data when page opens
     loadShipments();
   </script>
 </body>
