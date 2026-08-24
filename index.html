@@ -87,8 +87,9 @@
   </div>
 
   <script>
-    // ===== ONLY 1 SHIPMENT =====
+    // ===== 2 SHIPMENTS JOINED =====
     const shipments = [
+      // 1 - MANJULA.S
       {
         "tracking": "ADC-UKIN-260822-5503",
         "sender": "DR WILSON SCOTT",
@@ -103,10 +104,27 @@
         "insuredValue": "$70,000 - 28 Lakhs Verified",
         "items": ["iPhone XS Max", "Wrist Watch", "Gold Ring", "Hair Clips", "Jeans", "Chocolate", "Gold Necklace", "Handbag", "Gold Chain", "Women Shoes", "Soap and Perfume", "Jewellery", "Envelope with $70,000"],
         "history": ["Shipment created in ENGLAND.", "Shipment dispatched from ENGLAND.", "Shipment departed the United Kingdom.", "Shipment arrived at New Delhi International Airport.", "Awaiting customs charges before delivery to BANGALORE home address."]
+      },
+
+      // 2 - NANDHU .H PRASAD
+      {
+        "tracking": "ADC-UKIN-260823-5504",
+        "sender": "DR JAMES",
+        "origin": "ENGLAND",
+        "customer": "NANDHU .H PRASAD",
+        "phone": "+91 89212 84279",
+        "destination": "ARAKALA HOUSE INDIA KERALA KOTTAYAM ATYIAMPUZHA SREEKANDAMANGALAM PIN CODE 686572",
+        "status": "Packages in New Delhi international airport now. You will be charged customs fees before your package will be delivered to your home address in KERALA",
+        "location": "KERALA",
+        "arrival": "23/08/2026",
+        "arrivalTime": "9:30am",
+        "insuredValue": "$70,000 - 28 Lakhs Verified",
+        "items": ["iPhone XS Max", "Wrist Watch", "Gold Ring", "Hair Clips", "Jeans", "Chocolate", "Gold Necklace", "Handbag", "Gold Chain", "Women Shoes", "Soap and Perfume", "Jewellery", "Envelope with $70,000"],
+        "history": ["Shipment created in ENGLAND.", "Shipment dispatched from ENGLAND.", "Shipment departed the United Kingdom.", "Shipment arrived at New Delhi International Airport.", "Awaiting customs charges before delivery to KERALA home address."]
       }
     ];
 
-    const SUPPORT_WHATSAPP = "447344993910"; // CHANGE THIS TO YOUR WHATSAPP NUMBER
+    const SUPPORT_WHATSAPP = "2290165468881"; // CHANGE THIS TO YOUR WHATSAPP NUMBER
 
     function trackShipment() {
       const input = document.getElementById('trackingInput').value.trim();
